@@ -1,12 +1,13 @@
-# Try to import and call the registration function from the microrts module.
-try:
-    from rl_algo_impls.microrts.registration import register_envs
-    register_envs()
-except Exception as e:
-    print("Could not import the microRTS registration function. Check the repository documentation.")
-    raise e
+from gymnasium.envs.registration import register
 
+# Manually register the microRTS environment
+register(
+    id="Microrts-small-net-bw8a-40m-ent5-lr3c-05wb21wr-vf50-nga-a10",
+    entry_point="rl_algo_impls.microrts.vec_env.microrts_vec_env:MicroRTSGridModeVecEnv",
+    max_episode_steps=100000000,
+)
 
+# Then proceed with the rest of your imports and training code...
 
 # Support for PyTorch mps mode (https://pytorch.org/docs/stable/notes/mps.html)
 import os
