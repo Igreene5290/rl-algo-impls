@@ -1,9 +1,11 @@
 # Try to import and call the registration function from the microrts module.
 try:
-    from rl_algo_impls.microrts import register_envs
+    from rl_algo_impls.microrts.registration import register_envs
     register_envs()
-except ImportError:
+except Exception as e:
     print("Could not import the microRTS registration function. Check the repository documentation.")
+    raise e
+
 
 
 # Support for PyTorch mps mode (https://pytorch.org/docs/stable/notes/mps.html)
